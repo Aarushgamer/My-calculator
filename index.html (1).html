@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My Calculator</title>
+</head>
+<body>
+    <h1>My Calculator</h1>
+
+    <input id="num1" type="number" placeholder="First number">
+
+    <select id="operator">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+
+    <input id="num2" type="number" placeholder="Second number">
+
+    <button onclick="calculate()">Calculate</button>
+
+    <h2 id="result">Solution will appear here</h2>
+
+    <script>
+        function calculate() {
+            let num1 = Number(document.getElementById("num1").value);
+            let num2 = Number(document.getElementById("num2").value);
+            let operator = document.getElementById("operator").value;
+            let solution;
+
+            if (operator === "+") {
+                solution = num1 + num2;
+            } else if (operator === "-") {
+                solution = num1 - num2;
+            } else if (operator === "*") {
+                solution = num1 * num2;
+            } else if (operator === "/") {
+                if (num2 === 0) {
+                    document.getElementById("result").textContent =
+                        "Error: Cannot divide by zero";
+                    return;
+                }
+                solution = num1 / num2;
+            } else {
+                document.getElementById("result").textContent =
+                    "101 Error: Invalid characters used";
+                return;
+            }
+
+            document.getElementById("result").textContent =
+                "Solution: " + solution;
+        }
+    </script>
+</body>
+</html>
